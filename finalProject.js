@@ -1,4 +1,8 @@
+var geoP = d3.json('')
 var presidentPromise = d3.csv('president.csv');
+
+
+
 presidentPromise.then(function(data){
   presidentMap(data)
 },
