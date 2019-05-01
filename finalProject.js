@@ -1,50 +1,50 @@
 var geoP = d3.json('usaJSON.json')
 var presidentPromise = d3.csv('president.csv');
-//presidentPromise.then(function(data){
 
-
+var defFunc = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
 var stateData = data[1]
-emptyDict = {}
-console.log(stateData)
-console.log(geoData)
-geoData.features.forEach(function(j){
-  console.log('feature',j)
-  console.log(j.properties.name, 'got here')
-  stateData.forEach(function(k){
-    console.log('how about',j.properties.name)
-    if (geoData.properties.name == stateData.name){
-        console.log('match!')
-    }
-  })
-  //stateData.forEach(function(data){
 
-  })
-})
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})})
 
 drawMap(geoData)
+})}
 
 
-//})
-/*  stateDict = {}
-  emptyArray = []
-var geoData = data[0]
-var stateData = data[1]
-console.log(stateData)
-stateData.forEach(function(data){
-  stateDict[data.year,data.state]=data
-})
-  console.log(stateDict)
 
-})
-*/
+defFunc(1976)
+
+
+//IMPORTANT STUFF BELOW
 var drawMap = function(data){
- //var screen =
+ var screen = {
+   width : 1000,
+   height : 900
+ }
+
+var margins = {
+  top:10,
+  bottom:200,
+  left:10,
+  right:100
+};
+var height = screen.width - margins.top - margins.bottom;
+var width = screen.width - margins.left - margins.right;
+
 
 var projection = d3.geoAlbersUsa()
 
 var svg = d3.select('svg')
+            .attr('height',height)
+            .attr('width', width)
+console.log(data)
 var states = svg.append('g')
 .attr('id','states')
 .selectAll('g')
@@ -52,34 +52,28 @@ var states = svg.append('g')
 .enter()
 .append('g')
 .classed('state',true)
+.attr('fill',function(d){
+  demVotes = parseInt(d.properties.democrat.candidatevotes)
+  console.log(demVotes)
+  repVotes = parseInt(d.properties.republican.candidatevotes)
+
+  if (demVotes > repVotes){
+  console.log(d.properties.name, 'is democratic')
+  return "#065DB6"}
+  else{
+  console.log(d.properties.name, 'is republican')
+    return "#D74934"
+  }})
+var years = [1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016]
+
+d3.select('body').selectALL('button')
+.enter()
+.data(years)
+.append('button')
+.attr('id',function(d){return d})
 
 var stateGenerator = d3.geoPath()
       .projection(projection)
   states.append('path')
     .attr('d',stateGenerator)
 }
-/*var presidentMap = function(data){
-
-  console.log(data)
-  var returnState = function(d,i){if (d.year == "2016"){
-     return console.log(d.year)
-     console.log('fun')
-  }}
-  returnState(data)
-  //console.log(data)
-  //var logYear = function(d,i){
-  //  console.log(d)
-  }
-
-
-
-
-/*
-var senatePromise = d3.csv('senate.csv')
-senatePromise.then(function(data){
-  //console.log(data)
-},
-function(err){
-  console.log(err)
-});
-*/
