@@ -458,15 +458,15 @@ var states = svg.append('g')
     var demPercent = demVotes/totalVotes
     var repPercent = repVotes/totalVotes
     var percentDiff = (demPercent - repPercent)
-    console.log(demPercent,repPercent,percentDiff)
+    //console.log(demPercent,repPercent,percentDiff)
     /////Edit here!!!!
-  return d3.interpolateBlues(.15+(2*percentDiff))}
+  return d3.interpolateBlues((2*percentDiff))}
   else{
     var repPercent = repVotes/totalVotes
     var demPercent = demVotes/totalVotes
     var percentDiff = (repPercent - demPercent)
-    console.log(demPercent,repPercent,percentDiff)
-    return d3.interpolateReds(.15+(2*percentDiff))
+    //console.log(demPercent,repPercent,percentDiff)
+    return d3.interpolateReds((2*percentDiff))
   }})
 .attr('stroke',"black")
 .on('mouseover',function(d,i){
@@ -477,7 +477,7 @@ var states = svg.append('g')
   .attr('y', stateGenerator.centroid(d)[1])
   .text(d.properties.name )
 
-  .attr('fill','white')
+  .attr('fill','black')
 
 })
 .on('mouseout',function(d,i){
