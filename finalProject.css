@@ -1,17 +1,129 @@
 h1{
-  color:#1A1E3A
+  color:#1A1E3A;
+
 }
 h2{
   color:#8D0D1A
 }
 body{
-  background-color:#D1D0E3
+  background-color:#D1D0E3;
+  right:20%
 }
+.year{
+  color: black;
+  width: 65%;
+  float: right;
+}
+.democrat{
+  color: #065DB6;
 
+}
+.republican{
+  color: #D74934;
+}
+.straightUp text{
+  pointer-events: none;
+}
+.year76 {
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:15%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year80{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:20%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year84{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:25%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year88{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:30%;
+  right:0;
+  height:5%;
+  width: 8%;
+}
+.year92{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:35%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year96{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:40%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year00{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:45%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year04{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:50%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year08{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:55%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+.year12{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:60%;
+  right:0;
+  height:5%;
+  width:8%;
 
-/* D1D0E3 white
-676B85 light blue
-1A1E3A navy
-985866 pinkish
-8D0D1A dark red
-*/
+}
+.year16{
+  position: fixed;
+  background-color: #22292E;
+  color: white;
+  top:65%;
+  right:0;
+  height:5%;
+  width:8%;
+}
+button{
+  font-size:14px;
+}

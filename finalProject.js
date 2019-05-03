@@ -1,7 +1,8 @@
 var geoP = d3.json('usaJSON.json')
 var presidentPromise = d3.csv('president.csv');
 
-var defFunc = function(year){
+
+var promise2016 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
 var stateData = data[1]
@@ -12,38 +13,248 @@ geoData.features.forEach(function(feature){
       if (k.state == feature.properties.name){
         if (k.party != "" && k.candidate != ""){
         feature.properties[k.party] = k}
-      }}})})
-
+      }}})
+    })
 drawMap(geoData)
+//drawSecondMap(geoData)
+
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+var promise1976 = function(year){
+
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
 })}
 
 
 
-defFunc(1976)
+var promise1980 = function(year){
+
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
 
 
-//IMPORTANT STUFF BELOW
-var drawMap = function(data){
+var promise1984 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+var promise1988 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+var promise1992 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+var promise1996 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+var promise2000 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+var promise2004 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+var promise2008 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+
+var promise2012 = function(year){
+Promise.all([geoP,presidentPromise]).then(function(data){
+var geoData = data[0]
+var stateData = data[1]
+
+geoData.features.forEach(function(feature){
+  stateData.forEach(function(k){
+    if (k.year == year.toString()){
+      if (k.state == feature.properties.name){
+        if (k.party != "" && k.candidate != ""){
+        feature.properties[k.party] = k}
+      }}})
+    })
+drawMap(geoData)
+//drawSecondMap(geoData)
+//drawNewMap(geoData,1976)
+//useButton(geoData,2016)
+})}
+
+
+
+promise2016(2016)
+
+
+var drawMap = function(data,year){
  var screen = {
-   width : 1000,
-   height : 900
+   width : 1200,
+   height : 550
  }
 
 var margins = {
   top:10,
-  bottom:200,
+  bottom:10,
   left:10,
   right:100
 };
-var height = screen.width - margins.top - margins.bottom;
+var height = screen.height - margins.top - margins.bottom;
 var width = screen.width - margins.left - margins.right;
 
+var myDict = {democrat1976: "297", republican1976: '240', democrat1980: '49', republican1980: '489', democrat1984: '13',
+republican1984: '525', democrat1988: '111', republican1988: '426', democrat1992: '370', republican1992: '168', democrat1996: '379',
+republican1996: '159', democrat2000: '266', republican2000: '271', democrat2004: '251', republican2004: '286', democrat2008: '365',
+republican2008: '173', democrat2012: '332', republican2012: '206', democrat2016: '227', republican2016: '304'}
 
 var projection = d3.geoAlbersUsa()
 
-var svg = d3.select('svg')
+var svg = d3.select('.straightUp')
             .attr('height',height)
             .attr('width', width)
+
+
+d3.selectAll('button')
+.on('click', function(){
+  var svg = d3.select('.straightUp')
+  .classed('hidden',true)
+
+})
+
 console.log(data)
 var states = svg.append('g')
 .attr('id','states')
@@ -54,26 +265,227 @@ var states = svg.append('g')
 .classed('state',true)
 .attr('fill',function(d){
   demVotes = parseInt(d.properties.democrat.candidatevotes)
-  console.log(demVotes)
   repVotes = parseInt(d.properties.republican.candidatevotes)
 
   if (demVotes > repVotes){
-  console.log(d.properties.name, 'is democratic')
   return "#065DB6"}
   else{
-  console.log(d.properties.name, 'is republican')
     return "#D74934"
   }})
-var years = [1976,1980,1984,1988,1992,1996,2000,2004,2008,2012,2016]
+.attr('stroke',"#D1D0E3")
+.on('mouseover',function(d,i){
 
-d3.select('body').selectALL('button')
-.enter()
-.data(years)
-.append('button')
-.attr('id',function(d){return d})
+  svg.append('text')
+  .attr('id','tooltip'+i)
+  .attr('x', stateGenerator.centroid(d)[0])//x)
+  .attr('y', stateGenerator.centroid(d)[1])
+  .text(d.properties.name )
+  .attr('fill','white')
+
+})
+.on('mouseout',function(d,i){
+  d3.select('#tooltip' + i).remove()
+})
+
+d3.select('.democrat').data(data.features)
+.text(function(data){
+  if (data.properties.democrat.year=="1976"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1976'])
+  }
+  else if (data.properties.democrat.year=="1980") {
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1980'])
+  }
+  else if (data.properties.democrat.year=="1984"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1984'])
+  }
+  else if (data.properties.democrat.year=="1988"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1988'])
+  }
+  else if (data.properties.democrat.year=="1992"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1992'])
+  }
+  else if (data.properties.democrat.year=="1996"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat1996'])
+  }
+  else if (data.properties.democrat.year=="2000"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat2000'])
+  }
+  else if (data.properties.democrat.year=="2004"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat2004'])
+  }
+  else if (data.properties.democrat.year=="2008"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat2008'])
+  }
+  else if (data.properties.democrat.year=="2012"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat2012'])
+  }
+  else if (data.properties.democrat.year=="2016"){
+    return ("Democrat: " + data.properties.democrat.candidate + ' ' +myDict['democrat2016'])
+  }
+})
+
+
+
+d3.select('.republican').data(data.features)
+.text(function(data){
+  if (data.properties.democrat.year=="1976"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1976'])
+  }
+  else if (data.properties.democrat.year=="1980") {
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1980'])
+  }
+  else if (data.properties.democrat.year=="1984"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1984'])
+  }
+  else if (data.properties.democrat.year=="1988"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1988'])
+  }
+  else if (data.properties.democrat.year=="1992"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1992'])
+  }
+  else if (data.properties.democrat.year=="1996"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican1996'])
+  }
+  else if (data.properties.democrat.year=="2000"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican2000'])
+  }
+  else if (data.properties.democrat.year=="2004"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican2004'])
+  }
+  else if (data.properties.democrat.year=="2008"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican2008'])
+  }
+  else if (data.properties.democrat.year=="2012"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican2012'])
+  }
+  else if (data.properties.democrat.year=="2016"){
+    return ("Republican: " + data.properties.republican.candidate + ' ' +myDict['republican2016'])
+  }})
+d3.select('.year').data(data.features)
+.text(function(data){return 'Year: ' + data.properties.democrat.year})
+//+ myDict["democrat1976"]}})
+//if (data.properties.democrat.year=="1976"){
 
 var stateGenerator = d3.geoPath()
       .projection(projection)
   states.append('path')
     .attr('d',stateGenerator)
+
+
+  drawSecondMap(data)
+  //useButton(data)
+}
+
+
+var useButton = function(geoData){
+
+  var button76 = d3.select('.year76')
+  .on('click', function(){promise1976(1976)})
+  var button80 = d3.select('.year80')
+  .on('click', function(){promise1980(1980)})
+  var button84 = d3.select('.year84')
+  .on('click',function(){promise1984(1984)})
+  var button88 = d3.select('.year88')
+  .on('click',function(){promise1988(1988)})
+  var button92 = d3.select('.year92')
+  .on('click',function(){promise1992(1992)})
+  var button96 = d3.select('.year96')
+  .on('click',function(){promise1996(1996)})
+  var button00 = d3.select('.year00')
+  .on('click',function(){promise2000(2000)})
+  var button04 = d3.select('.year04')
+  .on('click',function(){promise2004(2004)})
+  var button08 = d3.select('.year08')
+  .on('click',function(){promise2008(2008)})
+  var button12 = d3.select('.year12')
+  .on('click',function(){promise2012(2012)})
+  var button16 = d3.select('.year16')
+  .on('click',function(){promise2016(2016)})
+}
+
+var drawSecondMap = function(data,year){
+  console.log('hello web')
+  var screen = {
+    width: 1200,
+    height: 550
+  }
+  var margins = {
+    top:10,
+    bottom:10,
+    left:10,
+    right:100
+  };
+var height = screen.height - margins.top - margins.bottom;
+var width = screen.width - margins.left - margins.right;
+
+
+
+
+
+var myDict = {democrat1976: "297", republican1976: '240', democrat1980: '49', republican1980: '489', democrat1984: '13',
+republican1984: '525', democrat1988: '111', republican1988: '426', democrat1992: '370', republican1992: '168', democrat1996: '379',
+republican1996: '159', democrat2000: '266', republican2000: '271', democrat2004: '251', republican2004: '286', democrat2008: '365',
+republican2008: '173', democrat2012: '332', republican2012: '206', democrat2016: '227', republican2016: '304'}
+
+
+var projection = d3.geoAlbersUsa()
+
+var svg = d3.select('.scaling')
+            .attr('height',height)
+            .attr('width', width)
+
+
+d3.selectAll('button')
+.on('click', function(){
+  var svg = d3.select('.scaling')
+  .classed('hidden',true)
+
+})
+
+
+var states = svg.append('g')
+.attr('id','states')
+.selectAll('g')
+.data(data.features)
+.enter()
+.append('g')
+.classed('state',true)
+.attr('fill',function(d){
+  demVotes = parseInt(d.properties.democrat.candidatevotes)
+  repVotes = parseInt(d.properties.republican.candidatevotes)
+  totalVotes = parseInt(d.properties.democrat.totalvotes)
+  if (demVotes > repVotes){
+    var demPercent = demVotes/totalVotes
+    var repPercent = repVotes/totalVotes
+    var percentDiff = (demPercent - repPercent)
+    console.log(demPercent,repPercent,percentDiff)
+    /////Edit here!!!!
+  return d3.interpolateBlues(.15+(2*percentDiff))}
+  else{
+    var repPercent = repVotes/totalVotes
+    var demPercent = demVotes/totalVotes
+    var percentDiff = (repPercent - demPercent)
+    console.log(demPercent,repPercent,percentDiff)
+    return d3.interpolateReds(.15+(2*percentDiff))
+  }})
+.attr('stroke',"black")
+.on('mouseover',function(d,i){
+
+  svg.append('text')
+  .attr('id','tooltip'+i)
+  .attr('x', stateGenerator.centroid(d)[0])//x)
+  .attr('y', stateGenerator.centroid(d)[1])
+  .text(d.properties.name )
+
+  .attr('fill','white')
+
+})
+.on('mouseout',function(d,i){
+  d3.select('#tooltip' + i).remove()
+})
+var stateGenerator = d3.geoPath()
+      .projection(projection)
+  states.append('path')
+    .attr('d',stateGenerator)
+  useButton(data)
 }
