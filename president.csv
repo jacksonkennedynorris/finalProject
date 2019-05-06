@@ -2543,7 +2543,6 @@ year,state,state_po,state_fips,state_cen,state_ic,office,candidate,party,writein
 2004,"Maryland","MD","24",52,52,"US President","Cobb, David","green","FALSE",3632,2384238,"20171015",""
 2004,"Maryland","MD","24",52,52,"US President","Peroutka, Michael","constitution party","FALSE",3421,2384238,"20171015",""
 2004,"Maryland","MD","24",52,52,"US President","Other","unaffiliated","TRUE",34,2384238,"20171015",""
-2004,"Maryland","MD","24",52,52,"US President","Other","democrat","TRUE",7,2384238,"20171015",""
 2004,"Massachusetts","MA","25",14,3,"US President","Kerry, John","democrat","FALSE",1803800,2927455,"20171015",""
 2004,"Massachusetts","MA","25",14,3,"US President","Bush, George W.","republican","FALSE",1071109,2927455,"20171015",""
 2004,"Massachusetts","MA","25",14,3,"US President","Blank Vote/Scattering","","FALSE",15067,2927455,"20171015",""

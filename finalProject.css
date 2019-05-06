@@ -1,25 +1,41 @@
 h1{
   color:#1A1E3A;
-
+  width: 70%;
+  float:right;
+  font-size: 32px;
+  margin-top:5px;
+  margin-bottom:5px;
 }
 h2{
-  color:#8D0D1A
+  color:#8D0D1A;
+  width: 70%;
+  float:right;
+  margin-top:5px;
+  margin-bottom:5px;
 }
 body{
   background-color:#D1D0E3;
   right:20%
 }
 .year{
+  position: fixed;
   color: black;
-  width: 65%;
-  float: right;
+  top:5;
+  right:0;
+  margin-top:5px;
+  margin-bottom:5px;
+  width: 8%;
 }
 .democrat{
   color: #065DB6;
+  width:78%;
+  float:right;
 
 }
 .republican{
   color: #D74934;
+  float:right;
+  width:78%;
 }
 .straightUp text{
   pointer-events: none;

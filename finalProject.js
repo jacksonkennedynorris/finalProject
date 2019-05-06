@@ -255,7 +255,7 @@ d3.selectAll('button')
 
 })
 
-console.log(data)
+//console.log(data)
 var states = svg.append('g')
 .attr('id','states')
 .selectAll('g')
@@ -404,7 +404,7 @@ var useButton = function(geoData){
 }
 
 var drawSecondMap = function(data,year){
-  console.log('hello web')
+  //console.log('hello web')
   var screen = {
     width: 1200,
     height: 550
