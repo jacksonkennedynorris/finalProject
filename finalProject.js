@@ -445,7 +445,6 @@ var states = svg.append('g')
             demoVotes = parseInt(d.properties.democrat.candidatevotes)
             repubVotes = parseInt(d.properties.republican.candidatevotes)
             totalVotes = parseInt(d.properties.democrat.totalvotes)
-            console.log(demVotes,repVotes,totVotes)
             var demPercent = 100*(demoVotes/totalVotes)
             var repPercent = 100*(repubVotes/totalVotes)
             if (demVotes>repVotes){
@@ -458,11 +457,7 @@ var states = svg.append('g')
           .attr('font-size','24px')
           .attr('font-weight','bold')
           .attr('text-anchor','middle')
-  /*  svg.append('text')
-      .attr('id','tooltip2' + i)
-      .attr('x', stateGenerator.centroid(d)[0])
-      .attr('y', stateGenerator.centroid(d)[1])
-      .text(d.properties.name)*/
+
 })
 .on('mouseout',function(d,i){
   d3.select('#tooltip' + i).remove()
