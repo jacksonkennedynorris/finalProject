@@ -225,7 +225,6 @@ var states = svg.append('g')
     else{
       return "#840E0C"
     }})
-    //.text('hello')
     svg.append('text')
           .attr('id','tooltip'+i)
           .attr('x', 400)//x)
