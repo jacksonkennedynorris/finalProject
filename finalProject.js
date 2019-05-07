@@ -14,6 +14,7 @@ geoData.features.forEach(function(feature){
         feature.properties[k.party] = k}
       }}})
     })
+
 drawMap(geoData)
 })}
 var promise1976 = function(year){
@@ -174,7 +175,7 @@ promise2016(2016)
 var drawMap = function(data,year){
  var screen = {
    width : 1200,
-   height : 550
+   height : 575
  }
 
 var margins = {
@@ -197,19 +198,12 @@ var svg = d3.select('.straightUp')
             .attr('height',height)
             .attr('width', width)
 
-d3.selectAll('button')
-.on('click', function(){
-  var svg = d3.select('.straightUp')
-  .classed('hidden',true)
-
-})
 var states = svg.append('g')
 .attr('id','states')
 .selectAll('g')
 .data(data.features)
 .enter()
 .append('g')
-.classed('state',true)
 .attr('fill',function(d){
   demVotes = parseInt(d.properties.democrat.candidatevotes)
   repVotes = parseInt(d.properties.republican.candidatevotes)
@@ -231,30 +225,48 @@ var states = svg.append('g')
     else{
       return "#840E0C"
     }})
+    //.text('hello')
+    svg.append('text')
+          .attr('id','tooltip'+i)
+          .attr('x', 400)//x)
+          .attr('y', 550)
+          .text(function(){
+            demInt = parseInt(d.properties.democrat.candidatevotes)
+            repInt = parseInt(d.properties.republican.candidatevotes)
+            if (demInt>repInt){
+            myString =  d.properties.democrat.candidate + ': ' + d.properties.democrat.candidatevotes + " " +  d.properties.republican.candidate+ ": " +d.properties.republican.candidatevotes +" "}
+            else{
+              myString = d.properties.republican.candidate+ ": " +d.properties.republican.candidatevotes + ' ' + d.properties.democrat.candidate + ': ' + d.properties.democrat.candidatevotes +" "
+            }
+        return myString})
+          .attr('fill','#1A1E3A')
+          .attr('font-size','24px')
+          .attr('font-weight','bold')
+          .attr('text-anchor','middle')
 
-  svg.append('text')
-  //WORKS
-  .attr('id','tooltip'+i)
-  .attr('x', stateGenerator.centroid(d)[0])//x)
-  .attr('y', stateGenerator.centroid(d)[1])
-  .text(d.properties.democrat.candidate, d.properties.democrat.candidatevotes,
-  d.properties.republican.candidate, d.properties.republican.candidatevotes)
-  .attr('fill','white')
+    svg.append('text')
+      .attr('id','tooltip2' + i)
+      .attr('x', stateGenerator.centroid(d)[0])
+      .attr('y', stateGenerator.centroid(d)[1])
+      .text(d.properties.name)
+  })
 
-})
 .on('mouseout',function(d,i){
-  d3.select('#tooltip' + i).remove()
-  d3.select(this)
-  .attr('fill',function(d){
-    demVotes = parseInt(d.properties.democrat.candidatevotes)
-    repVotes = parseInt(d.properties.republican.candidatevotes)
+    d3.select('#tooltip' + i).remove()
+    d3.select('#tooltip2' + i).remove()
+    d3.select(this)
+    .attr('fill',function(d){
+      demVotes = parseInt(d.properties.democrat.candidatevotes)
+      repVotes = parseInt(d.properties.republican.candidatevotes)
 
-    if (demVotes > repVotes){
-    return "#065DB6"}
-    else{
-      return "#D74934"
-    }})
-})
+      if (demVotes > repVotes){
+      return "#065DB6"}
+      else{
+        return "#D74934"
+      }})
+    })
+
+
 
 d3.select('.democrat').data(data.features)
 .text(function(data){
@@ -340,7 +352,6 @@ var stateGenerator = d3.geoPath()
 }
 
 var useButton = function(geoData){
-
   var button76 = d3.select('.year76')
   .on('click', function(){promise1976(1976)})
   var button80 = d3.select('.year80')
@@ -368,7 +379,7 @@ var useButton = function(geoData){
 var drawSecondMap = function(data,year){
   var screen = {
     width: 1200,
-    height: 550
+    height: 600
   }
   var margins = {
     top:10,
@@ -389,11 +400,7 @@ var projection = d3.geoAlbersUsa()
 var svg = d3.select('.scaling')
             .attr('height',height)
             .attr('width', width)
-d3.selectAll('button')
-.on('click', function(){
-  var svg = d3.select('.scaling')
-  .classed('hidden',true)
-})
+
 
 
 var states = svg.append('g')
@@ -424,22 +431,42 @@ var states = svg.append('g')
   .attr('fill',function(d){
     demVotes = parseInt(d.properties.democrat.candidatevotes)
     repVotes = parseInt(d.properties.republican.candidatevotes)
+    totVotes = parseInt(d.properties.democrat.totalvotes)
     if (demVotes > repVotes){
     return "#112D56"}
     else{
       return "#840E0C"
     }})
-  svg.append('text')
-  //THIS ONE DOESN'T WORK
-  .attr('id','tooltip2')
-  .attr('x', stateGenerator.centroid(d)[0])//x)
-  .attr('y', stateGenerator.centroid(d)[1])
-  .text(d.properties.democrat.candidate, d.properties.democrat.candidatevotes,
-  d.properties.republican.candidate, d.properties.republican.candidatevotes)
-  .attr('fill','black')
+    svg.append('text')
+          .attr('id','tooltip'+i)
+          .attr('x', 400)
+          .attr('y', 550)
+          .text(function(){
+            demoVotes = parseInt(d.properties.democrat.candidatevotes)
+            repubVotes = parseInt(d.properties.republican.candidatevotes)
+            totalVotes = parseInt(d.properties.democrat.totalvotes)
+            console.log(demVotes,repVotes,totVotes)
+            var demPercent = 100*(demoVotes/totalVotes)
+            var repPercent = 100*(repubVotes/totalVotes)
+            if (demVotes>repVotes){
+            myString =  d.properties.democrat.candidate + ': ' + demPercent.toFixed(1) + "% " +  d.properties.republican.candidate+ ": " +repPercent.toFixed(1) + '%'}
+            else{
+              myString = d.properties.republican.candidate+ ": " + repPercent.toFixed(1) + '% ' + d.properties.democrat.candidate + ': ' + demPercent.toFixed(1) +"%"
+            }
+          return myString})
+          .attr('fill','#1A1E3A')
+          .attr('font-size','24px')
+          .attr('font-weight','bold')
+          .attr('text-anchor','middle')
+  /*  svg.append('text')
+      .attr('id','tooltip2' + i)
+      .attr('x', stateGenerator.centroid(d)[0])
+      .attr('y', stateGenerator.centroid(d)[1])
+      .text(d.properties.name)*/
 })
 .on('mouseout',function(d,i){
-  d3.select('#tooltip2').remove()
+  d3.select('#tooltip' + i).remove()
+  d3.select('#tooltip2' + i).remove()
   d3.select(this)
   .attr('fill',function(d){
     demVotes = parseInt(d.properties.democrat.candidatevotes)
@@ -462,62 +489,41 @@ var stateGenerator = d3.geoPath()
       .projection(projection)
   states.append('path')
     .attr('d',stateGenerator)
-barGraph(data)
 useButton(data)
-}
 
-var barGraph = function(data){
-  var screen = {
-    width: 1200,
-    height: 500
-  }
-  var margins = {
-    top:10,
-    bottom:10,
-    left:10,
-    right:100
-  };
 
-var height = screen.height - margins.top - margins.bottom;
-var width = screen.width - margins.left - margins.right;
-var xScale = d3.scaleLinear()
-                  .domain([0, 3])
-                  .range([0,width]);
-var yScale = d3.scaleLinear()
-                 .domain([0, 70000000])
-                 .range([height,0]);
-demTotal = 0
-repTotal = 0
-total = 0
-console.log(data)
-data.features.forEach(function(i){
-  demTotal = demTotal + parseInt(i.properties.democrat.candidatevotes)
-  repTotal = repTotal + parseInt(i.properties.republican.candidatevotes)
-  total = total + parseInt(i.properties.democrat.totalvotes)
-  //console.log(total)
-})
-console.log(total)
-thirdParty = total-demTotal-repTotal
-myArray = [demTotal,repTotal,thirdParty]
-console.log(myArray)
-var svg = d3.select('.popularVotes').attr('width',screen.width).attr('height',screen.height)
-svg.selectAll('rect')
-.data(myArray)
+
+var blueList = [.8,.6,.4,.2,0]
+var redList = [0,.2,.4,.6,.8]
+var blueLeg = svg.selectAll('myLegend')
+.data(blueList)
 .enter()
 .append('rect')
-.attr('height',height)
-.attr('width',70)
-.attr('x', function(d,i){return i* 100})
-.attr('y', function(d,i){return yScale(d)})
-.attr('fill',function(d,i){
-  if (i=0){
-    return "#112D56"
-  }
-  else if (i=1){
-    return "#840E0C"
-  }
-  else{
-    return "#777A82"
-  }
-})
+.attr('height',15)
+.attr('width',15)
+.attr('x',870)
+.attr('y',function(d,i){return 115+30*i})
+.attr('fill',function(d,i){return d3.interpolateBlues(d)})
+.attr('stroke','black')
+
+
+var redLeg = svg.selectAll('myLegend')
+.data(redList)
+.enter()
+.append('rect')
+.attr('height',15)
+.attr('width',15)
+.attr('x', 870)
+.attr('y',function(d,i){return 265+30*i})
+.attr('fill',function(d,i){return d3.interpolateReds(d)})
+.attr('stroke','black')
+
+var myList = ['D+40%','D+30%','D+20%','D+10%','D+0.01%','R+.01%','R+10%','R+20%','R+30%','R+40%']
+var textLeg = svg.selectAll('myLegend')
+.data(myList)
+.enter()
+.append('text')
+.text(function(d){return d})
+.attr('x',895)
+.attr('y',function(d,i){return 127.5+30*i})
 }

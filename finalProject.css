@@ -1,7 +1,7 @@
 h1{
   color:#1A1E3A;
-  width: 70%;
-  float:right;
+  width: 90%;
+  float:center;
   font-size: 32px;
   margin-top:5px;
   margin-bottom:5px;
@@ -32,6 +32,12 @@ body{
   float:right;
 
 }
+.democrat:hover{
+  font-size: 30px;
+}
+.republican:hover{
+  font-size: 30px;
+}
 
 .republican{
   color: #D74934;
@@ -45,7 +51,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:15%;
+  top:20%;
   right:0;
   height:5%;
   width:8%;
@@ -54,7 +60,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:20%;
+  top:25%;
   right:0;
   height:5%;
   width:8%;
@@ -63,7 +69,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:25%;
+  top:30%;
   right:0;
   height:5%;
   width:8%;
@@ -72,7 +78,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:30%;
+  top:35%;
   right:0;
   height:5%;
   width: 8%;
@@ -81,7 +87,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:35%;
+  top:40%;
   right:0;
   height:5%;
   width:8%;
@@ -90,7 +96,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:40%;
+  top:45%;
   right:0;
   height:5%;
   width:8%;
@@ -99,7 +105,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:45%;
+  top:50%;
   right:0;
   height:5%;
   width:8%;
@@ -108,7 +114,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:50%;
+  top:55%;
   right:0;
   height:5%;
   width:8%;
@@ -117,7 +123,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:55%;
+  top:60%;
   right:0;
   height:5%;
   width:8%;
@@ -126,7 +132,7 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:60%;
+  top:65%;
   right:0;
   height:5%;
   width:8%;
@@ -136,11 +142,21 @@ body{
   position: fixed;
   background-color: #22292E;
   color: white;
-  top:65%;
+  top:70%;
   right:0;
   height:5%;
   width:8%;
 }
 button{
   font-size:14px;
+}
+#tooltip{
+  position:absolute;
+  width:200px;
+  height:auto;
+  background-color:'white';
+  pointer-events: none;
+}
+#tooltip.hidden{
+  display:none;
 }
