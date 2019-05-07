@@ -28,8 +28,7 @@ body{
 }
 .democrat{
   color: #065DB6;
-  width:78%;
-  float:right;
+  float:left;
 
 }
 .democrat:hover{
@@ -41,8 +40,7 @@ body{
 
 .republican{
   color: #D74934;
-  float:right;
-  width:78%;
+  float:left;
 }
 .straightUp text{
   pointer-events: none;
