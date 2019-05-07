@@ -1,7 +1,6 @@
 var geoP = d3.json('usaJSON.json')
 var presidentPromise = d3.csv('president.csv');
 
-
 var promise2016 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -16,12 +15,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
 var promise1976 = function(year){
 
 Promise.all([geoP,presidentPromise]).then(function(data){
@@ -37,13 +31,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
-
-
 var promise1980 = function(year){
 
 Promise.all([geoP,presidentPromise]).then(function(data){
@@ -59,12 +47,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
-
 var promise1984 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -79,11 +62,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
 var promise1988 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -98,11 +77,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
 var promise1992 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -117,11 +92,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
 var promise1996 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -136,9 +107,6 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
 var promise2000 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
@@ -154,11 +122,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
 var promise2004 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -173,9 +137,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
+
 })}
 var promise2008 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
@@ -191,12 +153,7 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
-
 var promise2012 = function(year){
 Promise.all([geoP,presidentPromise]).then(function(data){
 var geoData = data[0]
@@ -211,15 +168,8 @@ geoData.features.forEach(function(feature){
       }}})
     })
 drawMap(geoData)
-//drawSecondMap(geoData)
-//drawNewMap(geoData,1976)
-//useButton(geoData,2016)
 })}
-
-
-
 promise2016(2016)
-
 
 var drawMap = function(data,year){
  var screen = {
@@ -247,15 +197,12 @@ var svg = d3.select('.straightUp')
             .attr('height',height)
             .attr('width', width)
 
-
 d3.selectAll('button')
 .on('click', function(){
   var svg = d3.select('.straightUp')
   .classed('hidden',true)
 
 })
-
-//console.log(data)
 var states = svg.append('g')
 .attr('id','states')
 .selectAll('g')
@@ -274,17 +221,39 @@ var states = svg.append('g')
   }})
 .attr('stroke',"#D1D0E3")
 .on('mouseover',function(d,i){
+  d3.select(this)
+  .attr('fill',function(d){
+    demVotes = parseInt(d.properties.democrat.candidatevotes)
+    repVotes = parseInt(d.properties.republican.candidatevotes)
+
+    if (demVotes > repVotes){
+    return "#112D56"}
+    else{
+      return "#840E0C"
+    }})
 
   svg.append('text')
+  //WORKS
   .attr('id','tooltip'+i)
   .attr('x', stateGenerator.centroid(d)[0])//x)
   .attr('y', stateGenerator.centroid(d)[1])
-  .text(d.properties.name )
+  .text(d.properties.democrat.candidate, d.properties.democrat.candidatevotes,
+  d.properties.republican.candidate, d.properties.republican.candidatevotes)
   .attr('fill','white')
 
 })
 .on('mouseout',function(d,i){
   d3.select('#tooltip' + i).remove()
+  d3.select(this)
+  .attr('fill',function(d){
+    demVotes = parseInt(d.properties.democrat.candidatevotes)
+    repVotes = parseInt(d.properties.republican.candidatevotes)
+
+    if (demVotes > repVotes){
+    return "#065DB6"}
+    else{
+      return "#D74934"
+    }})
 })
 
 d3.select('.democrat').data(data.features)
@@ -324,8 +293,6 @@ d3.select('.democrat').data(data.features)
   }
 })
 
-
-
 d3.select('.republican').data(data.features)
 .text(function(data){
   if (data.properties.democrat.year=="1976"){
@@ -363,19 +330,14 @@ d3.select('.republican').data(data.features)
   }})
 d3.select('.year').data(data.features)
 .text(function(data){return 'Year: ' + data.properties.democrat.year})
-//+ myDict["democrat1976"]}})
-//if (data.properties.democrat.year=="1976"){
 
 var stateGenerator = d3.geoPath()
       .projection(projection)
   states.append('path')
     .attr('d',stateGenerator)
-
-
   drawSecondMap(data)
-  //useButton(data)
-}
 
+}
 
 var useButton = function(geoData){
 
@@ -404,7 +366,6 @@ var useButton = function(geoData){
 }
 
 var drawSecondMap = function(data,year){
-  //console.log('hello web')
   var screen = {
     width: 1200,
     height: 550
@@ -418,28 +379,20 @@ var drawSecondMap = function(data,year){
 var height = screen.height - margins.top - margins.bottom;
 var width = screen.width - margins.left - margins.right;
 
-
-
-
-
 var myDict = {democrat1976: "297", republican1976: '240', democrat1980: '49', republican1980: '489', democrat1984: '13',
 republican1984: '525', democrat1988: '111', republican1988: '426', democrat1992: '370', republican1992: '168', democrat1996: '379',
 republican1996: '159', democrat2000: '266', republican2000: '271', democrat2004: '251', republican2004: '286', democrat2008: '365',
 republican2008: '173', democrat2012: '332', republican2012: '206', democrat2016: '227', republican2016: '304'}
-
 
 var projection = d3.geoAlbersUsa()
 
 var svg = d3.select('.scaling')
             .attr('height',height)
             .attr('width', width)
-
-
 d3.selectAll('button')
 .on('click', function(){
   var svg = d3.select('.scaling')
   .classed('hidden',true)
-
 })
 
 
@@ -458,34 +411,113 @@ var states = svg.append('g')
     var demPercent = demVotes/totalVotes
     var repPercent = repVotes/totalVotes
     var percentDiff = (demPercent - repPercent)
-    //console.log(demPercent,repPercent,percentDiff)
-    /////Edit here!!!!
   return d3.interpolateBlues((2*percentDiff))}
   else{
     var repPercent = repVotes/totalVotes
     var demPercent = demVotes/totalVotes
     var percentDiff = (repPercent - demPercent)
-    //console.log(demPercent,repPercent,percentDiff)
     return d3.interpolateReds((2*percentDiff))
   }})
 .attr('stroke',"black")
 .on('mouseover',function(d,i){
-
+  d3.select(this)
+  .attr('fill',function(d){
+    demVotes = parseInt(d.properties.democrat.candidatevotes)
+    repVotes = parseInt(d.properties.republican.candidatevotes)
+    if (demVotes > repVotes){
+    return "#112D56"}
+    else{
+      return "#840E0C"
+    }})
   svg.append('text')
-  .attr('id','tooltip'+i)
+  //THIS ONE DOESN'T WORK
+  .attr('id','tooltip2')
   .attr('x', stateGenerator.centroid(d)[0])//x)
   .attr('y', stateGenerator.centroid(d)[1])
-  .text(d.properties.name )
-
+  .text(d.properties.democrat.candidate, d.properties.democrat.candidatevotes,
+  d.properties.republican.candidate, d.properties.republican.candidatevotes)
   .attr('fill','black')
-
 })
 .on('mouseout',function(d,i){
-  d3.select('#tooltip' + i).remove()
+  d3.select('#tooltip2').remove()
+  d3.select(this)
+  .attr('fill',function(d){
+    demVotes = parseInt(d.properties.democrat.candidatevotes)
+    repVotes = parseInt(d.properties.republican.candidatevotes)
+    totalVotes = parseInt(d.properties.democrat.totalvotes)
+    if (demVotes > repVotes){
+      var demPercent = demVotes/totalVotes
+      var repPercent = repVotes/totalVotes
+      var percentDiff = (demPercent - repPercent)
+
+    return d3.interpolateBlues((2*percentDiff))}
+    else{
+      var repPercent = repVotes/totalVotes
+      var demPercent = demVotes/totalVotes
+      var percentDiff = (repPercent - demPercent)
+      return d3.interpolateReds((2*percentDiff))
+    }})
 })
 var stateGenerator = d3.geoPath()
       .projection(projection)
   states.append('path')
     .attr('d',stateGenerator)
-  useButton(data)
+barGraph(data)
+useButton(data)
+}
+
+var barGraph = function(data){
+  var screen = {
+    width: 1200,
+    height: 500
+  }
+  var margins = {
+    top:10,
+    bottom:10,
+    left:10,
+    right:100
+  };
+
+var height = screen.height - margins.top - margins.bottom;
+var width = screen.width - margins.left - margins.right;
+var xScale = d3.scaleLinear()
+                  .domain([0, 3])
+                  .range([0,width]);
+var yScale = d3.scaleLinear()
+                 .domain([0, 70000000])
+                 .range([height,0]);
+demTotal = 0
+repTotal = 0
+total = 0
+console.log(data)
+data.features.forEach(function(i){
+  demTotal = demTotal + parseInt(i.properties.democrat.candidatevotes)
+  repTotal = repTotal + parseInt(i.properties.republican.candidatevotes)
+  total = total + parseInt(i.properties.democrat.totalvotes)
+  //console.log(total)
+})
+console.log(total)
+thirdParty = total-demTotal-repTotal
+myArray = [demTotal,repTotal,thirdParty]
+console.log(myArray)
+var svg = d3.select('.popularVotes').attr('width',screen.width).attr('height',screen.height)
+svg.selectAll('rect')
+.data(myArray)
+.enter()
+.append('rect')
+.attr('height',height)
+.attr('width',70)
+.attr('x', function(d,i){return i* 100})
+.attr('y', function(d,i){return yScale(d)})
+.attr('fill',function(d,i){
+  if (i=0){
+    return "#112D56"
+  }
+  else if (i=1){
+    return "#840E0C"
+  }
+  else{
+    return "#777A82"
+  }
+})
 }
