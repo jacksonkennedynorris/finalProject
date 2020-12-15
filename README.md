@@ -1,4 +1,4 @@
-# Welcome to my Electoral College data visualization! (through 2016) 
+# Electoral College Data Visualization (through 2016) 
 Created by Jackson Norris in Spring 2018 
 
 
